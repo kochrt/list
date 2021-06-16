@@ -1,6 +1,6 @@
 <template>
   <a
-    href="https://github.com/kochrt/list"
+    href="https://github.com/kochrt/list/edit/master/content/list.yaml"
     class="listItem flex w-full p-3 bg-blue-50 mb-2 rounded hover:bg-blue-100"
   >
     <div class="">
