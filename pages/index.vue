@@ -1,36 +1,44 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        list
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="lg:mx-24 lg:my-60 ml-2 mt-24 md:mx-12 md:my-24 max-w-5xl">
+    <div class="flex flex-col items-start">
+      <div class="flex flex-col items-start mb-6">
+        <h2 class="text-7xl font-black">The list of companies</h2>
+        <h3 class="text-2xl font-bold">that have a four day work week.</h3>
       </div>
+      <div class="mb-6">
+        <a
+          href="https://github.com/kochrt/list#criteria"
+          class="text-xl font-bold underline"
+          >Criteria</a
+        >
+      </div>
+      <add-your-company></add-your-company>
+      <list-item
+        v-for="(item, index) in list"
+        :key="index"
+        :item="item"
+      ></list-item>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Context } from "@nuxt/types/app";
+import ListItem from "~/components/ListItem.vue";
+import AddYourCompany from "~/components/AddYourCompany.vue"
 
-export default Vue.extend({})
+export default {
+  components: {
+    ListItem, AddYourCompany
+  },
+  async asyncData(context: Context) {
+    const [list, sites] = await Promise.all([
+      context.$content().where({ slug: "list" }).fetch(),
+     context.$content().where({ slug: "jobsites" }).fetch()
+    ])
+    return { list, sites };
+  },
+};
 </script>
 
 <style>
@@ -49,16 +57,8 @@ export default Vue.extend({})
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
