@@ -110,7 +110,29 @@
   added: June 17 2021
   url: https://getadministrate.com
   snippet: Training Management Platform designed to help enterprises and corporations streamline learning and development through our cloud-based, configurable software platform.
+  basedIn: US
   iconUrl: https://icons.duckduckgo.com/ip3/getadministrate.com.ico
+
+- company: bit.io
+  added: June 17 2021
+  url: https://bit.io
+  snippet: Create a Postgres database. Share it with anyone.
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/bit.io.ico
+
+- company: Awin
+  added: June 17 2021
+  url: https://awin.com
+  snippet: Our global affiliate marketing network empowers advertisers and publishers of all sizes to grow their businesses online.
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/awin.com.ico
+
+- company: Monograph
+  added: Jun 17 2021
+  url: https://monograph.com
+  snippet: Take control of your firm's financial health with an easy-to-use budget tracking solution built for architecture, landscape, and interior firms.
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/monograph.com.ico
 
 # - company:
 #   added:
