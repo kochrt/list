@@ -13,6 +13,8 @@ Format:
   added: {date added to the list}
   url: {company website}
   snippet: {brief description of what the company does}
+  basedIn: {country code}
+  iconUrl: {url of company logo}
 ```
 New companies should be added to the bottom.
 
