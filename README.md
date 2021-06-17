@@ -1,7 +1,7 @@
 # The list of companies
 with a four day work week.
 
-The list itself is in content/list.yaml
+The list itself is in [content/list.yaml](content/list.yaml)
 
 <br>
 
