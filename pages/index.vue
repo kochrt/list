@@ -29,7 +29,7 @@
               >list.yaml</a
             >
           </div>
-          <div class="flex flex-col mb-8">
+          <div class="flex flex-col mb-8 items-start">
             <a
               class="text-xl font-bold underline"
               :href="site.url"
