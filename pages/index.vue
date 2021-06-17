@@ -1,23 +1,49 @@
 <template>
-  <div class="lg:mx-24 lg:my-60 ml-2 mt-24 md:mx-12 md:my-24 max-w-5xl">
+  <div class="lg:mx-24 lg:my-60 mx-2 mt-24 md:mx-12 md:my-24 max-w-7xl">
     <div class="flex flex-col items-start">
       <div class="flex flex-col items-start mb-6">
         <h2 class="text-7xl font-black">The list of companies</h2>
         <h3 class="text-2xl font-bold">that have a four day work week.</h3>
       </div>
-      <div class="mb-6">
-        <a
-          href="https://github.com/kochrt/list#criteria"
-          class="text-xl font-bold underline"
-          >Criteria</a
-        >
+      <div class="flex flex-col md:flex-row">
+        <div class="md:mr-8">
+          <add-your-company></add-your-company>
+          <list-item
+            v-for="(item, index) in list"
+            :key="index"
+            :item="item"
+          ></list-item>
+        </div>
+        <div class="mb-6 flex flex-col">
+          <div class="mb-1">
+            <a
+              href="https://github.com/kochrt/list#criteria"
+              class="text-xl font-bold underline"
+              >Criteria</a
+            >
+          </div>
+          <div class="mb-8">
+            <a
+              href="https://raw.githubusercontent.com/kochrt/list/master/content/list.yaml"
+              class="text-xl font-bold underline"
+              >list.yaml</a
+            >
+          </div>
+          <div class="flex flex-col mb-8">
+            <a
+              class="text-xl font-bold underline"
+              :href="site.url"
+              v-for="(site, index) in sites"
+              :key="index"
+              >{{ site.name }}</a
+            >
+          </div>
+          <div class="flex flex-col md:max-w-lg">
+            <h3 class="text-xl font-bold">Recruiter Responses</h3>
+            <recruiter-responses :responses="responses"></recruiter-responses>
+          </div>
+        </div>
       </div>
-      <add-your-company></add-your-company>
-      <list-item
-        v-for="(item, index) in list"
-        :key="index"
-        :item="item"
-      ></list-item>
     </div>
   </div>
 </template>
@@ -25,18 +51,25 @@
 <script lang="ts">
 import { Context } from "@nuxt/types/app";
 import ListItem from "~/components/ListItem.vue";
-import AddYourCompany from "~/components/AddYourCompany.vue"
+import AddYourCompany from "~/components/AddYourCompany.vue";
+import RecruiterResponse from "~/components/RecruiterResponse.vue";
+import { IContentDocument } from '@nuxt/content/types/content';
+import RecruiterResponses from "~/components/RecruiterResponses.vue"
 
 export default {
   components: {
-    ListItem, AddYourCompany
+    ListItem,
+    AddYourCompany,
+    RecruiterResponse,
+    RecruiterResponses
   },
   async asyncData(context: Context) {
-    const [list, sites] = await Promise.all([
-      context.$content().where({ slug: "list" }).fetch(),
-     context.$content().where({ slug: "jobsites" }).fetch()
-    ])
-    return { list, sites };
+    const [list, sites, responses] = await Promise.all(
+      ["list", "jobsites", "responses"].map((slug) =>
+        context.$content().where({ slug }).fetch()
+      )
+    );
+    return { list, sites, responses: (responses as IContentDocument[])[0].responses };
   },
 };
 </script>

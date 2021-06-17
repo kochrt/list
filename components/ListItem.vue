@@ -1,5 +1,5 @@
 <template>
-  <a :href="item.url" class="listItem flex w-full p-3 bg-gray-50 hover:bg-gray-100 mb-2 rounded">
+  <a :href="item.url" class="flex w-full p-3 bg-gray-50 hover:bg-gray-100 mb-2 rounded transition">
     <div class="flex flex-col items-start">
       <h1 class="text-3xl font-black">
         {{ item.company }}
