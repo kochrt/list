@@ -1,6 +1,8 @@
 # The list of companies
 with a four day work week.
 
+The list itself is in content/list.yaml
+
 <br>
 
 # Why
@@ -9,7 +11,7 @@ The pandemic has shown what's possible with a better work/life balance. Many enl
 <br>
 
 ### But I don't mind working 5 days a week!
-Then by all means, keep doing that! No one will stop you.
+Then by all means, keep doing that!
 
 However, there's no need to try to keep the goal of a shorter week from the rest of us - we can coexist! 
 

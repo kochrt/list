@@ -1,48 +1,20 @@
 <template>
   <div class="lg:mx-24 lg:my-60 mx-2 mt-24 md:mx-12 md:my-24 max-w-7xl">
     <div class="flex flex-col items-start">
-      <div class="flex flex-col items-start mb-6">
-        <h2 class="text-7xl font-black">The list of companies</h2>
+      <div class="flex flex-col items-start mb-6 px-2">
+        <h2 class="text-5xl md:text-7xl font-black">The list of companies</h2>
         <h3 class="text-2xl font-bold">that have a four day work week.</h3>
       </div>
       <div class="flex flex-col md:flex-row">
-        <div class="md:mr-8">
-          <add-your-company></add-your-company>
+        <div class="md:mr-8 mb-4">
           <list-item
             v-for="(item, index) in list"
             :key="index"
             :item="item"
           ></list-item>
+          <add-your-company></add-your-company>
         </div>
-        <div class="mb-6 flex flex-col">
-          <div class="mb-1">
-            <a
-              href="https://github.com/kochrt/list#criteria"
-              class="text-xl font-bold underline"
-              >Criteria</a
-            >
-          </div>
-          <div class="mb-8">
-            <a
-              href="https://raw.githubusercontent.com/kochrt/list/master/content/list.yaml"
-              class="text-xl font-bold underline"
-              >list.yaml</a
-            >
-          </div>
-          <div class="flex flex-col mb-8 items-start">
-            <a
-              class="text-xl font-bold underline"
-              :href="site.url"
-              v-for="(site, index) in sites"
-              :key="index"
-              >{{ site.name }}</a
-            >
-          </div>
-          <div class="flex flex-col md:max-w-lg">
-            <h3 class="text-xl font-bold">Recruiter Responses</h3>
-            <recruiter-responses :responses="responses"></recruiter-responses>
-          </div>
-        </div>
+        <sidebar :sites="sites" :responses="responses"></sidebar>
       </div>
     </div>
   </div>
@@ -52,16 +24,14 @@
 import { Context } from "@nuxt/types/app";
 import ListItem from "~/components/ListItem.vue";
 import AddYourCompany from "~/components/AddYourCompany.vue";
-import RecruiterResponse from "~/components/RecruiterResponse.vue";
+import Sidebar from "~/components/Sidebar.vue";
 import { IContentDocument } from '@nuxt/content/types/content';
-import RecruiterResponses from "~/components/RecruiterResponses.vue"
 
 export default {
   components: {
     ListItem,
     AddYourCompany,
-    RecruiterResponse,
-    RecruiterResponses
+    Sidebar,
   },
   async asyncData(context: Context) {
     const [list, sites, responses] = await Promise.all(
@@ -69,7 +39,11 @@ export default {
         context.$content().where({ slug }).fetch()
       )
     );
-    return { list, sites, responses: (responses as IContentDocument[])[0].responses };
+    return {
+      list,
+      sites,
+      responses: (responses as IContentDocument[])[0].responses,
+    };
   },
 };
 </script>
