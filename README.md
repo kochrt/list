@@ -5,6 +5,23 @@ The list itself is in content/list.yaml
 
 <br>
 
+# Adding to the list
+Format:
+
+```yaml
+- company: {company name}
+  added: {date added to the list}
+  url: {company website}
+  snippet: {brief description of what the company does}
+```
+New companies should be added to the bottom.
+
+Open to adding new fields as long as the field can be added to most entries.
+
+Edits to the list should be supported by a link to the company's policy in the corresponding pull request, or the pull request should be made from a company email address.
+#
+<br>
+
 # Why
 The pandemic has shown what's possible with a better work/life balance. Many enlightened companies were doing it even before COVID.
 
