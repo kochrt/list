@@ -15,6 +15,7 @@
       >
     </div>
     <div class="flex flex-col mb-8 items-start">
+      <h3 class="text-xl font-bold mb-1">Job sites</h3>
       <a
         class="text-xl font-bold underline"
         :href="site.url"

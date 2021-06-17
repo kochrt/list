@@ -12,7 +12,7 @@
             :key="index"
             :item="item"
           ></list-item>
-          <add-your-company></add-your-company>
+          <add-your-company class="mt-4"></add-your-company>
         </div>
         <sidebar :sites="sites" :responses="responses"></sidebar>
       </div>

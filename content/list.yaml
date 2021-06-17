@@ -5,6 +5,8 @@
 #   added: {date added to the list}
 #   url: {company website}
 #   snippet: {brief description of what the company does}
+#   basedIn: {country code}
+#   iconUrl: {url for company logo}
 #   
 # New companies should be added to the bottom.
 #
@@ -16,30 +18,105 @@
 
 - company: Buffer
   added: June 15 2021
-  url: https://buffer.com/
+  url: https://buffer.com
   snippet: Simpler social media tools for authentic engagement.
+  basedIn: US
+  iconUrl: /buffer.svg
 
 - company: Wildbit
   added: June 15 2021
-  url: https://wildbit.com/
+  url: https://wildbit.com
   snippet: Human-focused businesses.
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/wildbit.com.ico
 
 - company: Volt Athletics
   added: June 15 2021
-  url: https://www.voltathletics.com/
+  url: https://www.voltathletics.com
   snippet: The intelligent training platform - dedicated to enabling everyone to reach their health, fitness, and performance goals by combining best-in-class training with cutting-edge technology.
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/voltathletics.com.ico
 
 - company: RealCrowd
   added: June 17 2021
   url: https://www.realcrowd.com
   snippet: Real estate investing built for you
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/realcrowd.com.ico
 
 - company: Standard Notes
   added: June 17 2021
   url: https://standardnotes.org
   snippet: A safe place for your notes, thoughts, and life's work - a free, open-source, and completely encrypted notes app.
+  basedIn: US
+  iconUrl: https://standardnotes.org/assets/icon.png
 
 - company: Nova
   added: June 17 2021
   url: https://createwithnova.com
   snippet: The leader in social display - the most effective creative in every channel.
+  iconUrl: https://icons.duckduckgo.com/ip3/createwithnova.com.ico
+
+- company: MRL Consulting
+  added: June 17 2021
+  url: https://www.mrlcg.com
+  snippet: Global specialist recruitment for the niche high technology and financial markets
+  basedIn: UK
+  iconUrl: https://space-elay.fra1.digitaloceanspaces.com/files/406b38aa-3582-413a-bd8b-17b0892036c2.png
+
+- company: Radioactive PR
+  added: June 17 2021
+  url: https://www.radioactivepr.com/
+  snippet: Full service PR agency
+  basedIn: UK
+  iconUrl: https://www.radioactivepr.com/wp-content/uploads/2018/10/cropped-FAV-192x192.png
+
+- company: Perpetual Guardian
+  added: June 17 2021
+  url: https://www.perpetualguardian.co.nz/
+  snippet: Specialists in providing Wills, Trusts and Enduring Powers of Attorney
+  basedIn: NZ
+  iconUrl: https://icons.duckduckgo.com/ip3/perpetualguardian.co.nz.ico
+
+- company: Lolly
+  added: June 17 2021
+  url:  https://lolly.co
+  snippet: The automation company dedicated to the discovery, optimisation & automation of business processes.
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/lolly.co.ico
+
+- company: Unito
+  added:  June 17 2021
+  url: https://unito.io
+  snippet: Build powerful 2-way integrations between business apps to automate your workflows and ease collaboration.
+  basedIn: CA
+  iconUrl: https://icons.duckduckgo.com/ip3/unito.io.ico
+
+- company: Dockwa
+  added: June 17 2021
+  url: https://dockwa.com
+  snippet: "Make the most out of being a boat owner: Explore new harbors and book slips & moorings"
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/dockwa.com.ico
+
+- company: marinas.com
+  added: June 17 2021
+  url: https://marinas.com
+  snippet: Marinas
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/marinas.com.ico
+
+- company: Administrate
+  added: June 17 2021
+  url: https://getadministrate.com
+  snippet: Training Management Platform designed to help enterprises and corporations streamline learning and development through our cloud-based, configurable software platform.
+  iconUrl: https://icons.duckduckgo.com/ip3/getadministrate.com.ico
+
+# - company:
+#   added:
+#   url:
+#   snippet:
+#   basedIn:
+#   iconUrl:
+
+
