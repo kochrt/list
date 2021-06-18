@@ -7,7 +7,7 @@
 #   snippet: {brief description of what the company does}
 #   basedIn: {country code}
 #   iconUrl: {url for company logo}
-#   
+#
 # New companies should be added to the bottom.
 #
 # Open to adding new fields as long as the field can be added to most entries.
@@ -80,13 +80,13 @@
 
 - company: Lolly
   added: June 17 2021
-  url:  https://lolly.co
+  url: https://lolly.co
   snippet: The automation company dedicated to the discovery, optimisation & automation of business processes.
   basedIn: UK
   iconUrl: https://icons.duckduckgo.com/ip3/lolly.co.ico
 
 - company: Unito
-  added:  June 17 2021
+  added: June 17 2021
   url: https://unito.io
   snippet: Build powerful 2-way integrations between business apps to automate your workflows and ease collaboration.
   basedIn: CA
@@ -134,11 +134,110 @@
   basedIn: US
   iconUrl: https://icons.duckduckgo.com/ip3/monograph.com.ico
 
+- company: Earth Science Partnership
+  added: June 18 2021
+  url: https://www.earthsciencepartnership.co.uk/
+  snippet: A consultancy of Engineers, Geologists and Applied Environmental Scientists - covering the UK and beyond from our Head Office in Cardiff, South Wales
+  basedIn: UK
+  iconUrl: https://www.earthsciencepartnership.co.uk/wp-content/themes/esp/images/favicon.png
+
+- company: Softer Success
+  added: June 18 2021
+  url: https://softersuccess.com/
+  snippet: Empowering organisations and employees to proactively Prevent Burnout
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/softersuccess.com.ico
+
+- company: PTHR
+  added: June 18 2021
+  url: https://www.pthr.co.uk/
+  snippet: Better Business for a Better World - innovative and transformational work solutions and HR, Organisation Design and learning products
+  basedIn: UK
+  iconUrl: https://www.pthr.co.uk/wp-content/themes/allday/images/favicon/favicon-32x32.png
+
+- company: Autonomy
+  added: June 18 2021
+  url: https://autonomy.work/
+  snippet: An independent, progressive think tank that focuses on the future of work and economic planning
+  basedIn: UK
+  iconUrl: https://autonomy.work/wp-content/uploads/2017/05/autonomylogoclean.png
+
+- company: flocc
+  added: June 18 2021
+  url: https://flocc.co/
+  snippet: Award winning, results-driven digital marketing for ambitious brands.
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/flocc.co.ico
+
+- company: Causeway Irish Housing Association
+  added: June 18 2021
+  url: https://www.irishcauseway.org.uk/
+  snippet: A not-for-profit organisation providing temporary accommodation primarily for young single homeless people in London.
+  basedIn: UK
+  iconUrl: https://irishcauseway.org.uk/wp-content/uploads/2019/01/ihalogoorigin200.png
+
+- company: Gracefruit
+  added: June 18 2021
+  url: https://www.gracefruit.com/
+  snippet: The natural choice for soap making and skincare ingredients
+  basedIn: UK
+  iconUrl: https://www.gracefruit.com/sites/gracefruit/images/favicon.ico
+
+- company: The Circle
+  added: June 18 2021
+  url: https://thecircledundee.org.uk/about/
+  snippet: A “More Than Profit” organisation focused on working with social entrepreneurs, community activists, charity leaders, commercial business leaders, trustees and non-executive directors.
+  basedIn: UK
+  iconUrl: https://i1.wp.com/thecircledundee.org.uk/wp-content/uploads/2020/02/Website-logo.jpg?w=100&ssl=1
+
+- company: 3D Issue
+  added: June 18 2021
+  url: https://www.3dissue.com/
+  snippet: Create beautiful digital Flipbooks for every device
+  basedIn: US
+  iconUrl: https://icons.duckduckgo.com/ip3/3dissue.com.ico
+
+- company: Big Potato Games
+  added: June 18 2021
+  url: https://bigpotato.com
+  snippet: London based indie boardgames company
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/bigpotato.com.ico
+
+- company: Social Enterprise Direct
+  added: June 18 2021
+  url: https://www.socialenterprisedirect.org.uk/
+  snippet: Innovative & ethical technological solutions to the challenges affecting businesses
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/socialenterprisedirect.org.uk.ico
+
+- company: Four Day Week
+  added: June 18 2021
+  url: https://fourdayweek.co.uk/
+  snippet: Job site for companies that have a four day Week
+  basedIn: UK
+  iconUrl: https://icons.duckduckgo.com/ip3/fourdayweek.co.uk.ico
+
+- company: Legacy Events
+  added: June 18 2021
+  url: https://legacy-events.com/
+  snippet: Virtual event management
+  basedIn: UK
+  iconUrl: https://legacy-events.com/wp-content/uploads/2018/12/cropped-Monogram_Grad-32x32.png
+
+- company: Target Publishing
+  added: June 18 2021
+  url: https://www.targetpublishing.com/
+  snippet: Creative content engaging millions every month
+  basedIn: UK
+  iconUrl: https://www.targetpublishing.com/wp-content/uploads/2019/01/cropped-tpl-32x32.png
+
+
+
 # - company:
 #   added:
 #   url:
 #   snippet:
 #   basedIn:
 #   iconUrl:
-
 

@@ -1,16 +1,38 @@
 <template>
-  <div class="lg:mx-24 lg:my-60 mx-2 mt-24 md:mx-12 md:my-24 max-w-7xl">
+  <div class="lg:mx-24 mx-2 md:mx-12 mt-4 mb-24 max-w-7xl">
+    <div class="chart-containerm md:my-12" style="position: relative">
+      <canvas ref="chartCanvas" width="400" height="200"></canvas>
+    </div>
     <div class="flex flex-col items-start">
       <div class="flex flex-col items-start mb-6 px-2">
         <h2 class="text-5xl md:text-7xl font-black">The list of companies</h2>
         <h3 class="text-2xl font-bold">that have a four day work week.</h3>
       </div>
-      <div class="flex flex-col md:flex-row">
-        <div class="md:mr-8 mb-4">
+      <div class="flex flex-col md:flex-row w-full">
+        <div class="md:mr-8 mb-4 w-full">
+          <div class="flex flex-row items-end justify-end">
+            <select class="mb-2" v-model="countryFilter">
+              <option selected>All countries</option>
+              <option
+                v-for="country in new Set(
+                  list
+                    .map((i) => i.basedIn)
+                    .filter((country) => !!country)
+                    .sort()
+                )"
+                :key="country"
+                :value="country"
+              >
+                {{ country }}
+              </option>
+            </select>
+          </div>
+
           <list-item
-            v-for="(item, index) in list"
+            v-for="(item, index) in filteredList"
             :key="index"
             :item="item"
+            :filteredByCountry="countryFilter !== 'All countries'"
           ></list-item>
           <add-your-company class="mt-4"></add-your-company>
         </div>
@@ -20,12 +42,26 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Context } from "@nuxt/types/app";
+<script>
 import ListItem from "~/components/ListItem.vue";
 import AddYourCompany from "~/components/AddYourCompany.vue";
 import Sidebar from "~/components/Sidebar.vue";
-import { IContentDocument } from '@nuxt/content/types/content';
+
+import {
+  Chart,
+  LineController,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  PieController,
+  ArcElement,
+  Legend,
+  Title,
+  BarElement,
+  BarController,
+} from "chart.js";
 
 export default {
   components: {
@@ -33,17 +69,124 @@ export default {
     AddYourCompany,
     Sidebar,
   },
-  async asyncData(context: Context) {
+  data() {
+    return {
+      chart: undefined,
+      chartData: {
+        labels: [],
+        data: [],
+      },
+      countryFilter: "All countries",
+    };
+  },
+  computed: {
+    filteredList() {
+      if (this.countryFilter === "All countries") {
+        return this.list;
+      }
+      return this.list.filter((item) => item.basedIn === this.countryFilter);
+    },
+  },
+  async asyncData(context) {
     const [list, sites, responses] = await Promise.all(
       ["list", "jobsites", "responses"].map((slug) =>
         context.$content().where({ slug }).fetch()
       )
     );
+    const chartData = {
+      labels: [],
+      data: [],
+    };
     return {
+      chartData,
       list,
       sites,
-      responses: (responses as IContentDocument[])[0].responses,
+      responses: responses[0].responses,
     };
+  },
+  mounted() {
+    this.registerChartComponents();
+    this.setupViewChart();
+  },
+  methods: {
+    setupViewChart() {
+      const viewData = {
+        labels: this.chartData.labels,
+        datasets: [
+          {
+            label: "Views",
+            data: this.chartData.data,
+            borderColor: "darkorchid",
+            fill: true,
+          },
+        ],
+      };
+      const options = {
+        backgroundColor: "mediumvioletred",
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            grid: {
+              display: false,
+              drawBorder: false,
+            },
+            display: false,
+            beginAtZero: true,
+            min: 0,
+            suggestedMax: 10,
+            ticks: {
+              // color: "mediumvioletred",
+              font: {
+                family: "Poppins",
+                size: 16,
+              },
+            },
+          },
+          x: {
+            grid: {
+              display: false,
+              drawBorder: false,
+            },
+            ticks: {
+              font: {
+                family: "Poppins",
+                weight: "500",
+              },
+            },
+          },
+        },
+        interaction: {
+          mode: "index",
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      };
+      this.chart = new Chart(this.$refs.chartCanvas, {
+        type: "line",
+        data: viewData,
+        options,
+      });
+    },
+    registerChartComponents() {
+      Chart.register(
+        LineController,
+        CategoryScale,
+        LinearScale,
+        PointElement,
+        LineElement,
+        Tooltip,
+        PieController,
+        ArcElement,
+        Legend,
+        Title,
+        BarElement,
+        BarController
+      );
+    },
   },
 };
 </script>
