@@ -1,6 +1,6 @@
 <template>
   <div class="lg:mx-24 mx-2 md:mx-12 mt-4 mb-24 max-w-7xl">
-    <div class="chart-containerm md:my-12" style="position: relative">
+    <div class="chart-containerm md:my-12 mb-6" style="position: relative">
       <canvas ref="chartCanvas" width="400" height="200"></canvas>
     </div>
     <div class="flex flex-col items-start">
@@ -14,12 +14,7 @@
             <select class="mb-2" v-model="countryFilter">
               <option selected>All countries</option>
               <option
-                v-for="country in new Set(
-                  list
-                    .map((i) => i.basedIn)
-                    .filter((country) => !!country)
-                    .sort()
-                )"
+                v-for="country in countryFlags"
                 :key="country"
                 :value="country"
               >
@@ -61,7 +56,22 @@ import {
   Title,
   BarElement,
   BarController,
+  Filler,
 } from "chart.js";
+
+const months = [
+  "January",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 export default {
   components: {
@@ -86,6 +96,14 @@ export default {
       }
       return this.list.filter((item) => item.basedIn === this.countryFilter);
     },
+    countryFlags() {
+      return new Set(
+        this.list
+          .map((i) => i.basedIn)
+          .filter((country) => !!country)
+          .sort()
+      );
+    },
   },
   async asyncData(context) {
     const [list, sites, responses] = await Promise.all(
@@ -93,36 +111,71 @@ export default {
         context.$content().where({ slug }).fetch()
       )
     );
+
+    const companiesByMonth = {};
+    for (let item of list) {
+      const dateAdded = new Date(item.added);
+      const standardizedDate = dateAdded.setDate(1);
+      if (!companiesByMonth[standardizedDate]) {
+        companiesByMonth[standardizedDate] = 0;
+      }
+      companiesByMonth[standardizedDate] += 1;
+    }
+
+    const entries = Object.entries(companiesByMonth);
+    entries
+      .sort((monthA, monthB) => {
+        return monthA[0] - monthB[0];
+      })
+      .map((month) => {
+        const date = new Date(month[0]);
+        return `${months[date.getMonth()]} ${date.getFullYear()}`;
+      });
+
+    for (let i = 1; i < entries.length; i++) {
+      entries[i][1] += entries[i - 1][1];
+    }
+
+    const monthTitles = entries.map((month) => month[0])
+    const counts = entries.map((month) => month[1])
+
+    monthTitles.unshift(new Date("May 1 2021").getTime())
+    counts.unshift(counts[0])
+
     const chartData = {
-      labels: [],
-      data: [],
+      labels: monthTitles,
+      data: counts,
     };
     return {
       chartData,
       list,
       sites,
       responses: responses[0].responses,
+      entries,
     };
   },
   mounted() {
     this.registerChartComponents();
-    this.setupViewChart();
+    this.setupChart();
   },
   methods: {
-    setupViewChart() {
+    setupChart() {
       const viewData = {
         labels: this.chartData.labels,
         datasets: [
           {
-            label: "Views",
+            label: "# companies",
             data: this.chartData.data,
-            borderColor: "darkorchid",
+            borderColor: "transparent",
+            backgroundColor: "pink",
             fill: true,
+            tension: 0.3,
+            cubicInterpolationMode: "monotone",
+            pointRadius: 0,
           },
         ],
       };
       const options = {
-        backgroundColor: "mediumvioletred",
         maintainAspectRatio: false,
         scales: {
           y: {
@@ -133,7 +186,7 @@ export default {
             display: false,
             beginAtZero: true,
             min: 0,
-            suggestedMax: 10,
+            suggestedMax: 100,
             ticks: {
               // color: "mediumvioletred",
               font: {
@@ -148,6 +201,18 @@ export default {
               drawBorder: false,
             },
             ticks: {
+              callback(val, index) {
+                const label = this.getLabelForValue(val);
+                const date = new Date(parseInt(label));
+                const now = new Date();
+                if (
+                  date.getMonth() === now.getMonth() &&
+                  date.getFullYear() === now.getFullYear()
+                ) {
+                  return `${months[date.getMonth() - 1]} ${date.getFullYear()}`;
+                }
+                return ``;
+              },
               font: {
                 family: "Poppins",
                 weight: "500",
@@ -162,6 +227,14 @@ export default {
         plugins: {
           legend: {
             display: false,
+          },
+          tooltip: {
+            callbacks: {
+              title(a) {
+                const date = new Date(parseInt(a[0].label));
+                return `${months[date.getMonth() - 1]} ${date.getFullYear()}`;
+              },
+            },
           },
         },
       };
@@ -184,7 +257,8 @@ export default {
         Legend,
         Title,
         BarElement,
-        BarController
+        BarController,
+        Filler
       );
     },
   },
