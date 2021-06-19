@@ -1,4 +1,4 @@
-# The list of companies
+# [The list of companies](https://thelistofcompanies.com)
 with a four day work week.
 
 The list itself is in [content/list.yaml](content/list.yaml)
