@@ -3,6 +3,10 @@ with a four day work week.
 
 The list itself is in [content/list.yaml](content/list.yaml)
 
+This is a [Nuxt](https://nuxtjs.org/) app that uses the [content](https://content.nuxtjs.org/) module to render markdown/yaml.
+
+So pages (there's only one) are in [/pages](/pages) and content is in [/content](/content).
+
 <br>
 
 # Adding to the list
