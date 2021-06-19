@@ -20,7 +20,6 @@
               </option>
             </select>
           </div>
-
           <list-item
             v-for="(item, index) in filteredList"
             :key="index"

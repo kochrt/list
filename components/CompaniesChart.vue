@@ -50,13 +50,32 @@ export default {
   mounted() {
     this.registerChartComponents();
     const companiesByMonth = {};
+    let earliest
     for (let item of this.list) {
       const dateAdded = new Date(item.added);
       const standardizedDate = dateAdded.setDate(1);
+      if (!earliest || standardizedDate < earliest) {
+        earliest = standardizedDate
+      }
       if (!companiesByMonth[standardizedDate]) {
         companiesByMonth[standardizedDate] = 0;
       }
       companiesByMonth[standardizedDate] += 1;
+    }
+
+    if (earliest) {
+      const nextMonthStandardized = (d) => {
+        let nextMonth = new Date(d + (32 * 24 * 60 * 60 * 1000))
+        nextMonth.setHours(0, 0, 0, 0)
+        return nextMonth.setDate(1)
+      }
+      let nextMonth = nextMonthStandardized(new Date().setDate(1))
+      while (earliest < nextMonth) {
+        if (!companiesByMonth[earliest]) {
+          companiesByMonth[earliest] = 0
+        }
+        earliest = nextMonthStandardized(earliest)
+      }
     }
 
     const entries = Object.entries(companiesByMonth);
@@ -72,6 +91,9 @@ export default {
     for (let i = 1; i < entries.length; i++) {
       entries[i][1] += entries[i - 1][1];
     }
+
+    // Add an empty next month
+    entries.push([0])
 
     const monthTitles = entries.map((month) => month[0]);
     const counts = entries.map((month) => month[1]);
