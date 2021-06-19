@@ -7,7 +7,7 @@
       p-4
       bg-white
       border
-      hover:border-indigo-600
+      hover:border-pink-600
       mb-4
       rounded
       transition

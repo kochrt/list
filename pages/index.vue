@@ -190,7 +190,6 @@ export default {
             ticks: {
               // color: "mediumvioletred",
               font: {
-                family: "Poppins",
                 size: 16,
               },
             },
