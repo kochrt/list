@@ -232,6 +232,13 @@
   basedIn: UK
   iconUrl: https://www.targetpublishing.com/wp-content/uploads/2019/01/cropped-tpl-32x32.png
 
+- company: Lime Health
+  added: June 22 2021
+  url: https://lime.health
+  snippet: Helping healthcare organizations to measure and improve the patient experience and the quality of care.
+  basedIn: CA
+  iconUrl: https://lime.health/img/favicon.png
+  
 # - company:
 #   added:
 #   url:
