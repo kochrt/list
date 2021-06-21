@@ -55,9 +55,9 @@ export default {
   computed: {
     filteredList() {
       if (this.countryFilter === "All countries") {
-        return this.list.reverse();
+        return Array.from(this.list).reverse();
       }
-      return this.list.filter((item) => item.basedIn === this.countryFilter).reverse();
+      return Array.from(this.list.filter((item) => item.basedIn === this.countryFilter)).reverse();
     },
     countryFlags() {
       return new Set(
