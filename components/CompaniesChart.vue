@@ -139,6 +139,7 @@ export default {
             ticks: {
               // color: "mediumvioletred",
               font: {
+                family: 'system-ui',
                 size: 16,
               },
             },
