@@ -33,7 +33,7 @@
     "eslint": "^7.22.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.7.0",
-    "jest": "^27.0.4",
+    "jest": "^28.0.1",
     "postcss": "^8.2.8",
     "push-dir": "^0.4.1",
     "ts-jest": "^26.5.4",
